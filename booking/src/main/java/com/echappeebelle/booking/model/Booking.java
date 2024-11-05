@@ -1,36 +1,41 @@
 package com.echappeebelle.booking.model;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
 //@JsonFilter("monFiltreDynamique")
 @Entity
 public class Booking {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
 
+    @Id
     private int id;
-    private int booking_number;
+
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate start_date;
+
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate end_date;
     private int vehicle_id;
     private int user_id;
+    private int numberKm;
 
 
     public Booking(int id,
-                   int booking_number,
+
                    LocalDate start_date,
                    LocalDate end_date,
                    int vehicle_id,
-                   int user_id) {
+                   int user_id,
+                    int numberKm) {
 
 
         this.id = id;
-        this.booking_number = booking_number;
         this.start_date = start_date;
         this.end_date = end_date;
         this.vehicle_id = vehicle_id;
         this.user_id = user_id;
+        this.numberKm = numberKm;
 
     }
 
@@ -48,14 +53,9 @@ public class Booking {
     public void setId(int id) {
         this.id = id;
     }
-    //GETTER SETTER BOOKING NUMBER**************************************************************************************
-    public int getBooking_number() {
-        return this.booking_number;
-    }
-    public void setBooking_number(int booking_number) {
-        this.booking_number = booking_number;
+
     // GETTER SETTER START DATE*****************************************************************************************
-    }
+
     public LocalDate getStart_date() {
         return this.start_date;
 
@@ -88,5 +88,11 @@ public class Booking {
     public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
-
+    //GETTER SETTER NUMBER KM*******************************************************************************************
+    public int getNumberKm() {
+        return this.numberKm;
+    }
+    public void setNumberKm(int numberKm) {
+        this.numberKm = numberKm;
+    }
 }
