@@ -41,7 +41,7 @@ public class BookingServiceImpl implements BookingService {
             RestTemplate restTemplate = new RestTemplate();
             ResponseEntity<User> userResponse = restTemplate.getForEntity("http://localhost:9090/user/" + booking.getUser_id(), User.class);
 
-            ResponseEntity<Vehicle> vehicleResponse = restTemplate.getForEntity("http://localhost:8080/vehicles/" + booking.getVehicle_id(), Vehicle.class);
+            ResponseEntity<Vehicle> vehicleResponse = restTemplate.getForEntity("http://192.168.1.245:8080/vehicles/" + booking.getVehicle_id(), Vehicle.class);
 
 
             User user = userResponse.getBody();

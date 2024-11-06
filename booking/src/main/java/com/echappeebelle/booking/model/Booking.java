@@ -1,6 +1,6 @@
 package com.echappeebelle.booking.model;
 import jakarta.persistence.*;
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 import java.time.LocalDate;
 
@@ -9,12 +9,10 @@ import java.time.LocalDate;
 public class Booking {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate start_date;
-
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate end_date;
     private int vehicle_id;
     private int user_id;
