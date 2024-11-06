@@ -5,6 +5,7 @@ import com.echappeebelle.booking.dao.BookingDao;
 import com.echappeebelle.booking.model.Booking;
 import com.echappeebelle.booking.model.User;
 import com.echappeebelle.booking.model.Vehicle;
+import com.echappeebelle.booking.services.booking.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

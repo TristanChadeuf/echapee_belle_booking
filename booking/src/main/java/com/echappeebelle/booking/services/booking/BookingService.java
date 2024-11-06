@@ -1,4 +1,4 @@
-package com.echappeebelle.booking.services;
+package com.echappeebelle.booking.services.booking;
 
 import com.echappeebelle.booking.model.Booking;
 import java.util.List;

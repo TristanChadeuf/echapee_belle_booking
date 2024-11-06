@@ -1,10 +1,13 @@
-package com.echappeebelle.booking.services;
+package com.echappeebelle.booking.services.booking;
 
 
 import com.echappeebelle.booking.dao.BookingDao;
 import com.echappeebelle.booking.model.Booking;
 import com.echappeebelle.booking.model.User;
 import com.echappeebelle.booking.model.Vehicle;
+import com.netflix.appinfo.InstanceInfo;
+import com.netflix.discovery.EurekaClient;
+import com.netflix.discovery.shared.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,22 +19,19 @@ import java.util.*;
 @Service
 
 public class BookingServiceImpl implements BookingService {
-
+    private final EurekaClient eurekaClient;
     private final BookingDao bookingDao;
 
     @Autowired
-    public BookingServiceImpl(BookingDao bookingDao) {
+    public BookingServiceImpl(EurekaClient eurekaClient, BookingDao bookingDao) {
+        this.eurekaClient = eurekaClient;
         this.bookingDao = bookingDao;
     }
 
-    public List<Booking> findAll() {
-        return bookingDao.findAll();
-    }
 
-    public Optional<Booking> findById(int id) {
-        return bookingDao.findById(id);
-    }
+    public void blockDate(Booking booking){
 
+    }
 
     public Booking save(Booking booking) {
 
@@ -39,9 +39,19 @@ public class BookingServiceImpl implements BookingService {
         try {
 
             RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<User> userResponse = restTemplate.getForEntity("http://localhost:9090/user/" + booking.getUser_id(), User.class);
+            Application applicationVehicle = eurekaClient.getApplication("ECHAPPEEBELLEVEHICLE");
+            Application applicationUser = eurekaClient.getApplication("USERS");
 
-            ResponseEntity<Vehicle> vehicleResponse = restTemplate.getForEntity("http://192.168.1.245:8080/vehicles/" + booking.getVehicle_id(), Vehicle.class);
+            InstanceInfo instanceInfoVehicle = applicationVehicle.getInstances().get(0); // Get the first instance (or handle multiple)
+            String baseUrlVehicle = instanceInfoVehicle.getHomePageUrl();
+            InstanceInfo instanceInfoUser = applicationUser.getInstances().get(0); // Get the first instance (or handle multiple)
+            String baseUrlUser = instanceInfoUser.getHomePageUrl();
+
+            // Make the REST call to retrieve the vehicle details
+
+            ResponseEntity<User> userResponse = restTemplate.getForEntity(baseUrlUser + "user/" + booking.getUser_id(), User.class);
+
+            ResponseEntity<Vehicle> vehicleResponse = restTemplate.getForEntity(baseUrlVehicle + "vehicles/" + booking.getVehicle_id(), Vehicle.class);
 
 
             User user = userResponse.getBody();
@@ -61,6 +71,13 @@ public class BookingServiceImpl implements BookingService {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+    public List<Booking> findAll() {
+        return bookingDao.findAll();
+    }
+
+    public Optional<Booking> findById(int id) {
+        return bookingDao.findById(id);
     }
 
     public Booking BlockDate(Booking booking) {

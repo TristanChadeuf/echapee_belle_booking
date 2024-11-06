@@ -1,7 +1,7 @@
 package com.echappeebelle.booking.web.controller;
 
 import com.echappeebelle.booking.model.Booking;
-import com.echappeebelle.booking.services.BookingService;
+import com.echappeebelle.booking.services.booking.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
