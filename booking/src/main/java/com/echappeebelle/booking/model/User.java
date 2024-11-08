@@ -5,10 +5,10 @@ public class User {
 
     private int id;
     private String name;
-    private String first_name;
-    private String birth_date;
-    private String license_number;
-    private String license_obtention_date;
+    private String firstName;
+    private String birthDate;
+    private String licenseNumber;
+    private String licenseObtentionDate;
     private int age;
 
     //CONSTRUCTOR*******************************************************************************************************
@@ -23,15 +23,15 @@ public class User {
 
         this.id = id;
 
-        this.first_name = first_name;
+        this.firstName = first_name;
 
         this.name = name;
 
-        this.birth_date = birth_date;
+        this.birthDate = birth_date;
 
-        this.license_number = license_number;
+        this.licenseNumber = license_number;
 
-        this.license_obtention_date = license_obtention_date;
+        this.licenseObtentionDate = license_obtention_date;
 
         this.age = age;
 
@@ -55,11 +55,11 @@ public class User {
     //GETTER SETTER PRENOM *****************************************************************************************
 
     public String getFirst_name() {
-        return first_name;
+        return firstName;
     }
 
     public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+        this.firstName = first_name;
     }
     //GETTER SETTER NOM*********************************************************************************************
 
@@ -74,27 +74,27 @@ public class User {
 
 
     public String getBirth_date() {
-        return birth_date;
+        return birthDate;
     }
 
     public void setBirth_date(String birth_date) {
-        this.birth_date = birth_date;
+        this.birthDate = birth_date;
     }
     //GETTER SETTER LICENSE NUMBER**********************************************************************************
 
-    public String getLicense_number() {
-        return license_number;
+    public String getLicenseNumber() {
+        return licenseNumber;
     }
 
-    public void setLicense_number(String license_number) {
-        this.license_number = license_number;
+    public void setLicenseNumber(String licenseNumber) {
+        this.licenseNumber = licenseNumber;
     }
     //GETTER SETTER LICENSE NUMBER**********************************************************************************
-    public String getLicense_obtention_date() {
-        return license_obtention_date;
+    public String getLicenseObtentionDate() {
+        return licenseObtentionDate;
     }
-    public void setLicense_obtention_date(String license_obtention_date) {
-        this.license_obtention_date = license_obtention_date;
+    public void setLicenseObtentionDate(String licenseObtentionDate) {
+        this.licenseObtentionDate = licenseObtentionDate;
     }
     //GETTER SETTER AGE*********************************************************************************************
     public int getAge() {

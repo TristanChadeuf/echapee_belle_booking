@@ -12,10 +12,10 @@ public class Booking {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
-    private LocalDate start_date;
-    private LocalDate end_date;
-    private int vehicle_id;
-    private int user_id;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private int vehicleId;
+    private int userId;
     private int numberKm;
 
 
@@ -29,10 +29,10 @@ public class Booking {
 
 
         this.id = id;
-        this.start_date = start_date;
-        this.end_date = end_date;
-        this.vehicle_id = vehicle_id;
-        this.user_id = user_id;
+        this.startDate = start_date;
+        this.endDate = end_date;
+        this.vehicleId = vehicle_id;
+        this.userId = user_id;
         this.numberKm = numberKm;
 
     }
@@ -54,37 +54,37 @@ public class Booking {
 
     // GETTER SETTER START DATE*****************************************************************************************
 
-    public LocalDate getStart_date() {
-        return this.start_date;
+    public LocalDate getStartDate() {
+        return this.startDate;
 
     }
-    public void setStart_date(LocalDate start_date) {
-        this.start_date = start_date;
+    public void setStartDate(LocalDate start_date) {
+        this.startDate = start_date;
     // GETTER SETTER END DATE ******************************************************************************************
     }
-    public LocalDate getEnd_date() {
-        return this.end_date;
+    public LocalDate getEndDate() {
+        return this.endDate;
 
     }
-    public void setEnd_date(LocalDate end_date) {
+    public void setEndDate(LocalDate end_date) {
 
-        this.end_date = end_date;
+        this.endDate = end_date;
 
     }
     // ID VEHICLE*******************************************************************************************************
-    public int getVehicle_id() {
-        return this.vehicle_id;
+    public int getVehicleId() {
+        return this.vehicleId;
     }
-    public void setVehicle_id(int vehicle_id) {
-        this.vehicle_id = vehicle_id;
+    public void setVehicleId(int vehicleId) {
+        this.vehicleId = vehicleId;
     }
     //ID USER***********************************************************************************************************
-    public int getUser_id() {
-        return this.user_id;
+    public int getUserId() {
+        return this.userId;
 
     }
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int user_id) {
+        this.userId = user_id;
     }
     //GETTER SETTER NUMBER KM*******************************************************************************************
     public int getNumberKm() {

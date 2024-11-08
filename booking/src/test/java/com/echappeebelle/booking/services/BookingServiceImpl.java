@@ -40,9 +40,9 @@ public class BookingServiceImpl implements BookingService {
         try {
 
             RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<User> userResponse = restTemplate.getForEntity("http://localhost:9090/user/" + booking.getUser_id(), User.class);
+            ResponseEntity<User> userResponse = restTemplate.getForEntity("http://localhost:9090/user/" + booking.getUserId(), User.class);
 
-            ResponseEntity<Vehicle> vehicleResponse = restTemplate.getForEntity("http://localhost:8080/vehicles/" + booking.getVehicle_id(), Vehicle.class);
+            ResponseEntity<Vehicle> vehicleResponse = restTemplate.getForEntity("http://localhost:8080/vehicles/" + booking.getVehicleId(), Vehicle.class);
 
 
             User user = userResponse.getBody();
@@ -69,7 +69,7 @@ public class BookingServiceImpl implements BookingService {
 
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Vehicle> vehicleResponse = restTemplate.getForEntity("http://192.168.1.245:8080/vehicles/" + booking.getVehicle_id(), Vehicle.class);
+        ResponseEntity<Vehicle> vehicleResponse = restTemplate.getForEntity("http://192.168.1.245:8080/vehicles/" + booking.getVehicleId(), Vehicle.class);
         ResponseEntity<Booking> bookingResponse = restTemplate.getForEntity("http://localhost:8081/booking/" + booking.getId(), Booking.class);
 
 
@@ -84,10 +84,10 @@ public class BookingServiceImpl implements BookingService {
         if (optionalBooking.isPresent()) {
             Booking existingBooking = optionalBooking.get();
 
-            existingBooking.setUser_id(newBooking.getUser_id());
-            existingBooking.setVehicle_id(newBooking.getVehicle_id());
-            existingBooking.setStart_date(newBooking.getStart_date());
-            existingBooking.setEnd_date(newBooking.getEnd_date());
+            existingBooking.setUserId(newBooking.getUserId());
+            existingBooking.setVehicleId(newBooking.getVehicleId());
+            existingBooking.setStartDate(newBooking.getStartDate());
+            existingBooking.setEndDate(newBooking.getEndDate());
             existingBooking.setNumberKm(newBooking.getNumberKm());
 
             newBooking = bookingDao.save(existingBooking);

@@ -5,10 +5,12 @@ import com.echappeebelle.booking.dao.BookingDao;
 import com.echappeebelle.booking.model.Booking;
 import com.echappeebelle.booking.model.User;
 import com.echappeebelle.booking.model.Vehicle;
+import com.echappeebelle.booking.services.bookingDateCheck.BookingDateCheckServiceImpl;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Application;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +21,8 @@ import java.util.*;
 @Service
 
 public class BookingServiceImpl implements BookingService {
+    @Value("${server.port}")
+    private int port;
     private final EurekaClient eurekaClient;
     private final BookingDao bookingDao;
 
@@ -36,6 +40,7 @@ public class BookingServiceImpl implements BookingService {
     public Booking save(Booking booking) {
 
 
+
         try {
 
             RestTemplate restTemplate = new RestTemplate();
@@ -47,11 +52,12 @@ public class BookingServiceImpl implements BookingService {
             InstanceInfo instanceInfoUser = applicationUser.getInstances().get(0); // Get the first instance (or handle multiple)
             String baseUrlUser = instanceInfoUser.getHomePageUrl();
 
-            // Make the REST call to retrieve the vehicle details
 
-            ResponseEntity<User> userResponse = restTemplate.getForEntity(baseUrlUser + "user/" + booking.getUser_id(), User.class);
 
-            ResponseEntity<Vehicle> vehicleResponse = restTemplate.getForEntity(baseUrlVehicle + "vehicles/" + booking.getVehicle_id(), Vehicle.class);
+
+            ResponseEntity<User> userResponse = restTemplate.getForEntity(baseUrlUser + "user/" + booking.getUserId(), User.class);
+
+            ResponseEntity<Vehicle> vehicleResponse = restTemplate.getForEntity(baseUrlVehicle + "vehicles/" + booking.getVehicleId(), Vehicle.class);
 
 
             User user = userResponse.getBody();
@@ -85,7 +91,7 @@ public class BookingServiceImpl implements BookingService {
 
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Vehicle> vehicleResponse = restTemplate.getForEntity("http://192.168.1.245:8080/vehicles/" + booking.getVehicle_id(), Vehicle.class);
+        ResponseEntity<Vehicle> vehicleResponse = restTemplate.getForEntity("http://192.168.1.245:8080/vehicles/" + booking.getVehicleId(), Vehicle.class);
         ResponseEntity<Booking> bookingResponse = restTemplate.getForEntity("http://localhost:8081/booking/" + booking.getId(), Booking.class);
 
 
@@ -100,10 +106,10 @@ public class BookingServiceImpl implements BookingService {
         if (optionalBooking.isPresent()) {
             Booking existingBooking = optionalBooking.get();
 
-            existingBooking.setUser_id(newBooking.getUser_id());
-            existingBooking.setVehicle_id(newBooking.getVehicle_id());
-            existingBooking.setStart_date(newBooking.getStart_date());
-            existingBooking.setEnd_date(newBooking.getEnd_date());
+            existingBooking.setUserId(newBooking.getUserId());
+            existingBooking.setVehicleId(newBooking.getVehicleId());
+            existingBooking.setStartDate(newBooking.getStartDate());
+            existingBooking.setEndDate(newBooking.getEndDate());
             existingBooking.setNumberKm(newBooking.getNumberKm());
 
             newBooking = bookingDao.save(existingBooking);

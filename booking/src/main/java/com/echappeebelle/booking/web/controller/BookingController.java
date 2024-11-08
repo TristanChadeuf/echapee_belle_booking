@@ -12,6 +12,7 @@ public class BookingController {
 
     //CONSTRUCTOR*******************************************************************************************************
     private final BookingService bookingService;
+
     @Autowired
 
     public BookingController(BookingService bookingService) {
@@ -23,6 +24,7 @@ public class BookingController {
     public List<Booking> AllBookings() {
         return bookingService.findAll();
     }
+
 
     //ROUTE BOOKING ID**************************************************************************************************
 
