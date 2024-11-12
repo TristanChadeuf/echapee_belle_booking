@@ -1,4 +1,5 @@
 package com.echappeebelle.booking.model;
+
 import jakarta.persistence.*;
 
 
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 public class Booking {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     private LocalDate startDate;
@@ -25,7 +26,7 @@ public class Booking {
                    LocalDate end_date,
                    int vehicle_id,
                    int user_id,
-                    int numberKm) {
+                   int numberKm) {
 
 
         this.id = id;
@@ -58,38 +59,47 @@ public class Booking {
         return this.startDate;
 
     }
+
     public void setStartDate(LocalDate start_date) {
         this.startDate = start_date;
-    // GETTER SETTER END DATE ******************************************************************************************
+        // GETTER SETTER END DATE ******************************************************************************************
     }
+
     public LocalDate getEndDate() {
         return this.endDate;
 
     }
+
     public void setEndDate(LocalDate end_date) {
 
         this.endDate = end_date;
 
     }
+
     // ID VEHICLE*******************************************************************************************************
     public int getVehicleId() {
         return this.vehicleId;
     }
+
     public void setVehicleId(int vehicleId) {
         this.vehicleId = vehicleId;
     }
+
     //ID USER***********************************************************************************************************
     public int getUserId() {
         return this.userId;
 
     }
+
     public void setUserId(int user_id) {
         this.userId = user_id;
     }
+
     //GETTER SETTER NUMBER KM*******************************************************************************************
     public int getNumberKm() {
         return this.numberKm;
     }
+
     public void setNumberKm(int numberKm) {
         this.numberKm = numberKm;
     }

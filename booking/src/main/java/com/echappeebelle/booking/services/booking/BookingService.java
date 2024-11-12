@@ -10,6 +10,5 @@ public interface BookingService {
     Booking save(Booking vehicle);
     Booking update(int id, Booking vehicle);
     void deleteById(int id);
-    Booking BlockDate(Booking booking);
     void deleteAll();
 }

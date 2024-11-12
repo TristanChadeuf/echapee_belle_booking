@@ -1,11 +1,10 @@
 package com.echappeebelle.booking.model;
 
 
-
 import jakarta.persistence.*;
 
 
-public class Vehicle{
+public class Vehicle {
 
     private int idVehicle;
 
@@ -19,8 +18,6 @@ public class Vehicle{
     private String type;
     // Maps the 'type' field to the discriminator column for read-only purposes.
     // 'insertable = false, updatable = false' prevents conflicts since Hibernate controls this column.
-
-
 
 
     public Vehicle() {
@@ -49,6 +46,7 @@ public class Vehicle{
     public void setIdVehicle(int idVehicle) {
         this.idVehicle = idVehicle;
     }
+//**********************************************************************************************************************
 
     public String getType() {
         return type;
@@ -57,6 +55,7 @@ public class Vehicle{
     public void setType(String type) {
         this.type = type;
     }
+//**********************************************************************************************************************
 
     public String getPlateNumber() {
         return plateNumber;
@@ -65,6 +64,7 @@ public class Vehicle{
     public void setPlateNumber(String plateNumber) {
         this.plateNumber = plateNumber;
     }
+//**********************************************************************************************************************
 
     public String getBrand() {
         return brand;
@@ -73,6 +73,7 @@ public class Vehicle{
     public void setBrand(String brand) {
         this.brand = brand;
     }
+//**********************************************************************************************************************
 
     public String getModel() {
         return model;
@@ -81,6 +82,7 @@ public class Vehicle{
     public void setModel(String model) {
         this.model = model;
     }
+//**********************************************************************************************************************
 
     public String getColor() {
         return color;
@@ -89,6 +91,7 @@ public class Vehicle{
     public void setColor(String color) {
         this.color = color;
     }
+//**********************************************************************************************************************
 
     public int getBookingPriceInCents() {
         return bookingPriceInCents;
@@ -97,6 +100,7 @@ public class Vehicle{
     public void setBookingPriceInCents(int bookingPriceInCents) {
         this.bookingPriceInCents = bookingPriceInCents;
     }
+//**********************************************************************************************************************
 
     public int getPricePerKilometerInCents() {
         return pricePerKilometerInCents;
@@ -105,6 +109,7 @@ public class Vehicle{
     public void setPricePerKilometerInCents(int pricePerKilometerInCents) {
         this.pricePerKilometerInCents = pricePerKilometerInCents;
     }
+//**********************************************************************************************************************
 
     public int getTaxHorses() {
         return taxHorses;

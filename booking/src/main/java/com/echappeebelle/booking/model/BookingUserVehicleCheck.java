@@ -17,6 +17,8 @@ public class BookingUserVehicleCheck {
     public void setUserId( int userId ) {
         this.userId = userId;
     }
+    //**********************************************************************************************************************
+
     public int getVehicleId() {
         return vehicleId;
     }

@@ -19,7 +19,7 @@ public class User {
                 String birth_date,
                 String license_number,
                 String license_obtention_date,
-                int age){
+                int age) {
 
         this.id = id;
 
@@ -89,17 +89,21 @@ public class User {
     public void setLicenseNumber(String licenseNumber) {
         this.licenseNumber = licenseNumber;
     }
+
     //GETTER SETTER LICENSE NUMBER**********************************************************************************
     public String getLicenseObtentionDate() {
         return licenseObtentionDate;
     }
+
     public void setLicenseObtentionDate(String licenseObtentionDate) {
         this.licenseObtentionDate = licenseObtentionDate;
     }
+
     //GETTER SETTER AGE*********************************************************************************************
     public int getAge() {
         return age;
     }
+
     public void setAge(int age) {
         this.age = age;
     }
